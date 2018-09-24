@@ -63,12 +63,12 @@
 
         }); // receiving data closed
 
-        // 4. Ending request: handler of the end event which, always gets called
+        // 4. Ending request: handler of the end event which always gets called
         req.on('end', function(){
 
             stringPlaceHolder += utf8decoder.end();
 
-            // Selecting handler request should go to, if notFound Default to notFound
+            // Selecting handler request should go to; if notFound Default to notFound
             var selectedHandler = 
                 typeof(router[trimmedPath]) != 'undefined' 
                 ? router[trimmedPath]
