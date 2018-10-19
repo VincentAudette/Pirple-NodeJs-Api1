@@ -8,9 +8,6 @@ valuable meaning to it.
 ✌️ It serves a simple task: Sending a welcome message to any user who 
 happens to post something(anything) to the route /hello.
 
-👊 For those intending to question the ability of the API just know 
-that a REGEX is implemented to avoid errors due to random slaches.
-
 🤙To keep the server very simple to build it only runs on http
 
 This server was completed while following an online course:
