@@ -5,7 +5,11 @@
     const strDecoder = require('string_decoder').StringDecoder;
     const configEnvironment = require("./config");
     const fs = require('fs');
+    const dataWriter = require('./lib/data');
 
+    dataWriter.delete('test','testing','Rewriting', (err)=>{
+        if(err){console.log(err);}
+    });
 
     /**
      * Server creation
