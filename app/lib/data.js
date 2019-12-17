@@ -1,11 +1,12 @@
 /**
  * CRUD operations
  * @author Vincent Audette
- * @version 19.01
+ * @version 12.19.01
  */
 
 const fs = require('fs');
 const path = require('path');
+const utils = require('./utils');
 
 const lib = {};
 
@@ -31,7 +32,11 @@ lib.create = (dir, file, data, callback) => {
 }
 
 lib.read = (dir, file, callback) => {
-    fs.readFile(pathLocation(dir,file), 'utf8', (err,data)=> callback(err, data));
+    fs.readFile(pathLocation(dir,file), 'utf8', (err,data)=> {
+        ! err && data 
+        ? callback(false, utils.parseJsonToObject(data))
+        : callback(err, data);
+    });
 }
 
 lib.update = (dir, file, data, callback) => {
@@ -39,11 +44,13 @@ lib.update = (dir, file, data, callback) => {
     'r+',
     (err,fileDescriptor)=>{
         fs.ftruncate(fileDescriptor,(err)=>
-        !err ? fs.write(fileDescriptor,JSON.stringify(data),(err)=>{
-            !err ? fs.close(fileDescriptor,(err)=> callback(!err ? false:'error closing file'))
+        ! err 
+        ? fs.write(fileDescriptor,JSON.stringify(data),(err)=> {
+            ! err 
+            ? fs.close(fileDescriptor,(err)=> callback(!err ? false:'error closing file'))
             : callback('error writing file');
         })
-        :callback('error truncating file'))
+        : callback('error truncating file'))
 
     })
 
@@ -51,7 +58,7 @@ lib.update = (dir, file, data, callback) => {
 
 lib.delete =  (dir, file, callback) => {
     fs.unlink(pathLocation(dir,file), (err) => {
-        !err ? false : callback('error deleting the file');
+        callback(!err ? false : 'error deleting the file');
     })
 }
 

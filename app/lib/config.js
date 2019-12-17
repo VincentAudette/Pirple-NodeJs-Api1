@@ -7,12 +7,14 @@ environments.staging = {
     'httpPort': 2000,
     'httpsPort':2001,
     'envName': 'staging',
+    'HASHING_SECRET' : 'love_love_me_do',
 };
 
 environments.production = {
     'httpPort': 5000,
     'httpsPort':5001,
     'envName': 'production',
+    'HASHING_SECRET' : 'love_blablou_me_do',
 };
 
 //determine which env to select
