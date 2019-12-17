@@ -31,4 +31,22 @@ utils.getKeysByValue = (object, value) => {
   }
 
 
+  utils.createRandomString = (nbCharacters) => {
+
+    //Verify the type
+    if( typeof(nbCharacters) == 'number' && nbCharacters>0){
+
+        const charChoice = 'abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789';
+        let token = '';
+        
+        for(let i =0 ; i < nbCharacters; i++){
+            token += charChoice.charAt(Math.floor(Math.random()*charChoice.length))
+        }
+        return token;
+
+    }
+    
+  }
+
+
 module.exports = utils;
