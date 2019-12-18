@@ -8,6 +8,7 @@ environments.staging = {
     'httpsPort':2001,
     'envName': 'staging',
     'HASHING_SECRET' : 'love_love_me_do',
+    'maxChecks':5,
 };
 
 environments.production = {
@@ -15,6 +16,7 @@ environments.production = {
     'httpsPort':5001,
     'envName': 'production',
     'HASHING_SECRET' : 'love_blablou_me_do',
+    'maxChecks':5,
 };
 
 //determine which env to select
